@@ -1,4 +1,5 @@
 import { BaseComponent } from "./baseComponent";
+import { Input } from "./input";
 import { Toggle } from "./toggle";
 
 export class App extends BaseComponent {
@@ -44,9 +45,8 @@ export class App extends BaseComponent {
       parentElement: this.element,
     });
 
-    const input = new BaseComponent({
-      tagName: "input",
-      className: "input",
+    const input = new Input({
+      progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
     this.input = input;
