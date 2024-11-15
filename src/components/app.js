@@ -7,9 +7,6 @@ export class App extends BaseComponent {
     super({ tagName: "div", className: "container", parentElement });
 
     this.progressBar = null;
-    this.input = null;
-    this.toggleAnimation = null;
-    this.toggleHide = null;
   }
 
   init() {
@@ -45,24 +42,21 @@ export class App extends BaseComponent {
       parentElement: this.element,
     });
 
-    const input = new Input({
+    new Input({
       progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
-    this.input = input;
 
-    const toggleAnimation = new Toggle({
+    new Toggle({
       title: "animate",
       progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
-    this.toggleAnimation = toggleAnimation;
 
-    const toggleHide = new Toggle({
+    new Toggle({
       title: "hide",
       progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
-    this.toggleHide = toggleHide;
   }
 }

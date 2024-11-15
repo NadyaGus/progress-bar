@@ -16,6 +16,7 @@ export class Input extends BaseComponent {
   }
 
   handleInput() {
+    // TODO: debounce input
     this.progressBar.element.setAttribute("value", this.element.value);
   }
 }

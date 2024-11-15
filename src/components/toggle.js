@@ -7,7 +7,12 @@ export class Toggle extends BaseComponent {
     this.progressBar = progressBar;
     this.title = title;
     this.state = false;
-    this.element.innerText = title[0].toUpperCase() + title.slice(1);
+    this.init();
+  }
+
+  init() {
+    const title = this.title[0].toUpperCase() + this.title.slice(1);
+    this.addTextContent(title);
 
     this.appendCheckbox();
 
