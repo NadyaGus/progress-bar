@@ -1,15 +1,20 @@
 import { BaseComponent } from "./baseComponent";
+import { Toggle } from "./toggle";
 
 export class App extends BaseComponent {
   constructor(parentElement) {
     super({ tagName: "div", className: "container", parentElement });
 
     this.progressBar = null;
+    this.input = null;
+    this.toggleAnimation = null;
+    this.toggleHide = null;
   }
 
   init() {
     this.appendHeader();
     this.appendProgressBar();
+    this.appendControls();
   }
 
   appendHeader() {
@@ -30,5 +35,34 @@ export class App extends BaseComponent {
     });
 
     this.progressBar = progressBar;
+  }
+
+  appendControls() {
+    const controlsContainer = new BaseComponent({
+      tagName: "div",
+      className: "controls",
+      parentElement: this.element,
+    });
+
+    const input = new BaseComponent({
+      tagName: "input",
+      className: "input",
+      parentElement: controlsContainer.element,
+    });
+    this.input = input;
+
+    const toggleAnimation = new Toggle({
+      title: "animate",
+      progressBar: this.progressBar,
+      parentElement: controlsContainer.element,
+    });
+    this.toggleAnimation = toggleAnimation;
+
+    const toggleHide = new Toggle({
+      title: "hide",
+      progressBar: this.progressBar,
+      parentElement: controlsContainer.element,
+    });
+    this.toggleHide = toggleHide;
   }
 }
