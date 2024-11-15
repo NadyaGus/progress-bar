@@ -1,5 +1,6 @@
 import { BaseComponent } from "./baseComponent";
 import { Input } from "./input";
+import { ProgressBar } from "./progressBar";
 import { Toggle } from "./toggle";
 
 export class App extends BaseComponent {
@@ -13,6 +14,8 @@ export class App extends BaseComponent {
     this.appendHeader();
     this.appendProgressBar();
     this.appendControls();
+
+    this.subscribeControls();
   }
 
   appendHeader() {
@@ -26,9 +29,7 @@ export class App extends BaseComponent {
   }
 
   appendProgressBar() {
-    const progressBar = new BaseComponent({
-      tagName: "div",
-      className: "progress-bar",
+    const progressBar = new ProgressBar({
       parentElement: this.element,
     });
 
@@ -42,21 +43,37 @@ export class App extends BaseComponent {
       parentElement: this.element,
     });
 
-    new Input({
+    const input = new Input({
       progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
 
-    new Toggle({
+    const animateToggle = new Toggle({
       title: "animate",
-      progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
 
-    new Toggle({
+    const hideToggle = new Toggle({
       title: "hide",
-      progressBar: this.progressBar,
       parentElement: controlsContainer.element,
+    });
+
+    this.input = input;
+    this.animateToggle = animateToggle;
+    this.hideToggle = hideToggle;
+  }
+
+  subscribeControls() {
+    this.input.element.addEventListener("input", () => {
+      this.progressBar.handleProgressBar(this.input.element.value);
+    });
+
+    this.animateToggle.element.addEventListener("change", () => {
+      this.progressBar.handleAnimate(this.animateToggle.state);
+    });
+
+    this.hideToggle.element.addEventListener("change", () => {
+      this.progressBar.handleHidden(this.hideToggle.state);
     });
   }
 }

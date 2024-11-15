@@ -1,10 +1,9 @@
 import { BaseComponent } from "./baseComponent";
 
 export class Toggle extends BaseComponent {
-  constructor({ progressBar, title, parentElement }) {
+  constructor({ title, parentElement }) {
     super({ tagName: "label", className: "toggle", parentElement });
 
-    this.progressBar = progressBar;
     this.title = title;
     this.state = false;
     this.init();
@@ -31,6 +30,5 @@ export class Toggle extends BaseComponent {
 
   toggle() {
     this.state = !this.state;
-    this.progressBar.element.classList.toggle(this.title, this.state);
   }
 }

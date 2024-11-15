@@ -1,0 +1,20 @@
+progress {
+    background-color: white;
+    border: 1px solid blue;
+}
+
+::-webkit-progress-value {
+    transition: width 2s;
+}
+
+::-webkit-progress-value {
+    background-color: blue;
+}
+
+::-moz-progress-bar {
+    background-color: blue;
+}
+
+::-ms-fill {
+    background-color: blue;
+}

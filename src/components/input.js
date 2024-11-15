@@ -6,7 +6,6 @@ export class Input extends BaseComponent {
     this.progressBar = progressBar;
 
     this.addAttributes();
-    this.element.addEventListener("input", this.handleInput.bind(this));
   }
 
   addAttributes() {
@@ -17,6 +16,5 @@ export class Input extends BaseComponent {
 
   handleInput() {
     // TODO: debounce input
-    this.progressBar.element.setAttribute("value", this.element.value);
   }
 }
