@@ -1,8 +1,9 @@
-import { BaseComponent } from "./baseComponent";
+import { BaseComponent } from "../baseComponent";
+import style from "./toggle.module.css";
 
 export class Toggle extends BaseComponent {
   constructor({ title, parentElement }) {
-    super({ tagName: "label", className: "toggle", parentElement });
+    super({ tagName: "label", className: style.container, parentElement });
 
     this.title = title;
     this.state = false;
@@ -13,19 +14,25 @@ export class Toggle extends BaseComponent {
     const title = this.title[0].toUpperCase() + this.title.slice(1);
     this.addTextContent(title);
 
-    this.appendCheckbox();
+    this.appendToggle();
 
     this.element.addEventListener("change", this.toggle.bind(this));
   }
 
-  appendCheckbox() {
+  appendToggle() {
     this.checkbox = new BaseComponent({
       tagName: "input",
-      className: "checkbox",
+      className: style.checkbox,
       parentElement: this.element,
     });
 
     this.checkbox.element.setAttribute("type", "checkbox");
+
+    this.span = new BaseComponent({
+      tagName: "span",
+      className: style.toggle,
+      parentElement: this.element,
+    });
   }
 
   toggle() {

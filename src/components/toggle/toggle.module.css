@@ -1,0 +1,49 @@
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    background: #ddd;
+    border-radius: 50px;
+    transition: background .2s ease-in-out;
+    cursor: pointer;
+}
+
+.toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.15);
+    transition: left .2s ease-in-out,
+        width .2s ease-in-out,
+        transform .2s ease-in-out;
+}
+
+.checkbox:checked+.toggle {
+    background: #005bff;
+}
+
+.checkbox:checked+.toggle::after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.container:active .checkbox:not([disabled])+.toggle::after {
+    width: 28px;
+}
