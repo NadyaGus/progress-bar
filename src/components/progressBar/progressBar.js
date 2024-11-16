@@ -25,16 +25,16 @@ export class ProgressBar extends BaseComponent {
 
   handleProgressBar(value = 25) {
     this.progress.setAttribute("value", value);
+    clearInterval(this.interval);
 
-    let interval;
-    interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.value >= value ? this.value-- : this.value++;
 
       this.progress.setAttribute("value", this.value);
       this.element.style = `--value: ${this.value};`;
 
       if (this.value == value) {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, 20);
   }

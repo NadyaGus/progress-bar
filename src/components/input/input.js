@@ -17,6 +17,7 @@ export class Input extends BaseComponent {
     this.element.setAttribute("type", "number");
     this.element.setAttribute("min", "0");
     this.element.setAttribute("max", "100");
+    this.element.setAttribute("value", "25");
   }
 
   handleInput() {
@@ -32,7 +33,7 @@ export class Input extends BaseComponent {
     this.state >= 100 ? (this.state = 100) : this.state;
     this.state <= 0 ? (this.state = 0) : this.state;
 
-    let event = new Event("newValue");
+    let event = new Event("newValue", { bubbles: true });
     this.element.dispatchEvent(event);
     return this.state;
   }
