@@ -17,7 +17,8 @@ export class Input extends BaseComponent {
       className: style.input,
       parentElement: this.element,
     }).element;
-    this.addAttributes();
+    this.input.setAttribute("type", "number");
+    this.input.value = 25;
 
     new BaseComponent({
       tagName: "span",
@@ -26,11 +27,6 @@ export class Input extends BaseComponent {
     }).addTextContent("Value");
 
     this.handleInput();
-  }
-
-  addAttributes() {
-    this.input.setAttribute("type", "number");
-    this.input.setAttribute("value", "25");
   }
 
   handleInput() {
@@ -48,7 +44,6 @@ export class Input extends BaseComponent {
 
     let event = new Event("newValue", { bubbles: true });
     this.input.dispatchEvent(event);
-    this.input.setAttribute("value", this.state);
 
     return this.state;
   }

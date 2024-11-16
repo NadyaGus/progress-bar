@@ -7,24 +7,10 @@ export class Toggle extends BaseComponent {
 
     this.title = title;
     this.state = false;
-    this.init();
+    this.renderElement();
   }
 
-  init() {
-    this.appendToggle();
-
-    const title = this.title[0].toUpperCase() + this.title.slice(1);
-    const span = new BaseComponent({
-      tagName: "span",
-      className: style.title,
-      parentElement: this.element,
-    });
-    span.addTextContent(title);
-
-    this.element.addEventListener("change", this.toggle.bind(this));
-  }
-
-  appendToggle() {
+  renderElement() {
     this.checkbox = new BaseComponent({
       tagName: "input",
       className: style.checkbox,
@@ -38,6 +24,16 @@ export class Toggle extends BaseComponent {
       className: style.toggle,
       parentElement: this.element,
     });
+
+    const title = this.title[0].toUpperCase() + this.title.slice(1);
+    const span = new BaseComponent({
+      tagName: "span",
+      className: style.title,
+      parentElement: this.element,
+    });
+    span.addTextContent(title);
+
+    this.element.addEventListener("change", this.toggle.bind(this));
   }
 
   toggle() {
