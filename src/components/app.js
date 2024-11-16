@@ -1,5 +1,5 @@
 import { BaseComponent } from "./baseComponent";
-import { Input } from "./input";
+import { Input } from "./input/input";
 import { ProgressBar } from "./progressBar";
 import { Toggle } from "./toggle/toggle";
 

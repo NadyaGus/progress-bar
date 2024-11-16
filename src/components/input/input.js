@@ -1,8 +1,10 @@
-import { BaseComponent } from "./baseComponent";
+import { BaseComponent } from "../baseComponent";
+
+import style from "./input.module.css";
 
 export class Input extends BaseComponent {
   constructor({ progressBar, parentElement }) {
-    super({ tagName: "input", className: "input", parentElement });
+    super({ tagName: "input", className: style.input, parentElement });
     this.progressBar = progressBar;
 
     this.addAttributes();

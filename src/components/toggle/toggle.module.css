@@ -16,7 +16,7 @@
     height: 30px;
     background: #ddd;
     border-radius: 50px;
-    transition: background .2s ease-in-out;
+    transition: .2s ease-in-out;
     cursor: pointer;
 }
 
