@@ -44,7 +44,6 @@ export class App extends BaseComponent {
     });
 
     const input = new Input({
-      progressBar: this.progressBar,
       parentElement: controlsContainer.element,
     });
 
@@ -64,8 +63,8 @@ export class App extends BaseComponent {
   }
 
   subscribeControls() {
-    this.input.element.addEventListener("input", () => {
-      this.progressBar.handleProgressBar(this.input.element.value);
+    this.input.element.addEventListener("newValue", () => {
+      this.progressBar.handleProgressBar(this.input.state);
     });
 
     this.animateToggle.element.addEventListener("change", () => {

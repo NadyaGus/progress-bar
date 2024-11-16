@@ -17,7 +17,7 @@ export class ProgressBar extends BaseComponent {
       tagName: "progress",
       className: style.progress,
       parentElement: this.element,
-    }).element
+    }).element;
 
     this.progress.setAttribute("min", "0");
     this.progress.setAttribute("max", "100");
@@ -27,21 +27,16 @@ export class ProgressBar extends BaseComponent {
     this.progress.setAttribute("value", value);
 
     let interval;
-
     interval = setInterval(() => {
-      this.value < value
-        ? this.value += 1
-        : this.value -= 1;
+      this.value >= value ? this.value-- : this.value++;
 
       this.progress.setAttribute("value", this.value);
       this.element.style = `--value: ${this.value};`;
 
-      console.log(this.value, value);
-      if (this.value === value) {
+      if (this.value == value) {
         clearInterval(interval);
-        this.value = value;
       }
-    }, 20)
+    }, 20);
   }
 
   handleAnimate(isAnimate = false) {
