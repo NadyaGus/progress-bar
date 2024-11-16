@@ -11,10 +11,15 @@ export class Toggle extends BaseComponent {
   }
 
   init() {
-    const title = this.title[0].toUpperCase() + this.title.slice(1);
-    this.addTextContent(title);
-
     this.appendToggle();
+
+    const title = this.title[0].toUpperCase() + this.title.slice(1);
+    const span = new BaseComponent({
+      tagName: "span",
+      className: style.title,
+      parentElement: this.element,
+    });
+    span.addTextContent(title);
 
     this.element.addEventListener("change", this.toggle.bind(this));
   }

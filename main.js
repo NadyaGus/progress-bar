@@ -1,4 +1,4 @@
-import { App } from "./src/components/app";
+import { App } from "./src/components/app/app";
 
 const node = document.getElementById('app');
 

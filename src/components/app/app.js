@@ -1,7 +1,9 @@
-import { BaseComponent } from "./baseComponent";
-import { Input } from "./input/input";
-import { ProgressBar } from "./progressBar/progressBar";
-import { Toggle } from "./toggle/toggle";
+import { BaseComponent } from "../baseComponent";
+import { Input } from "../input/input";
+import { ProgressBar } from "../progressBar/progressBar";
+import { Toggle } from "../toggle/toggle";
+
+import style from "./app.module.css";
 
 export class App extends BaseComponent {
   constructor(parentElement) {
@@ -21,7 +23,7 @@ export class App extends BaseComponent {
   appendHeader() {
     const header = new BaseComponent({
       tagName: "h1",
-      className: "header",
+      className: style.header,
       parentElement: this.element,
     });
 
@@ -39,7 +41,7 @@ export class App extends BaseComponent {
   appendControls() {
     const controlsContainer = new BaseComponent({
       tagName: "div",
-      className: "controls",
+      className: style.controls,
       parentElement: this.element,
     });
 

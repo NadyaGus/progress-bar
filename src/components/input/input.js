@@ -5,36 +5,51 @@ import style from "./input.module.css";
 
 export class Input extends BaseComponent {
   constructor({ parentElement }) {
-    super({ tagName: "input", className: style.input, parentElement });
+    super({ tagName: "label", className: style.container, parentElement });
 
     this.state = "";
+    this.renderElement();
+  }
 
+  renderElement() {
+    this.input = new BaseComponent({
+      tagName: "input",
+      className: style.input,
+      parentElement: this.element,
+    }).element;
     this.addAttributes();
+
+    new BaseComponent({
+      tagName: "span",
+      className: style.value,
+      parentElement: this.element,
+    }).addTextContent("Value");
+
     this.handleInput();
   }
 
   addAttributes() {
-    this.element.setAttribute("type", "number");
-    this.element.setAttribute("min", "0");
-    this.element.setAttribute("max", "100");
-    this.element.setAttribute("value", "25");
+    this.input.setAttribute("type", "number");
+    this.input.setAttribute("value", "25");
   }
 
   handleInput() {
     const debounceHandle = debounce(this.setState.bind(this), 1000);
-    this.element.addEventListener("input", () => {
-      debounceHandle(this.element.value);
+    this.input.addEventListener("input", () => {
+      debounceHandle(this.input.value);
     });
   }
 
   setState() {
-    this.state = this.element.value;
+    this.state = this.input.value;
 
     this.state >= 100 ? (this.state = 100) : this.state;
     this.state <= 0 ? (this.state = 0) : this.state;
 
     let event = new Event("newValue", { bubbles: true });
-    this.element.dispatchEvent(event);
+    this.input.dispatchEvent(event);
+    this.input.setAttribute("value", this.state);
+
     return this.state;
   }
 }

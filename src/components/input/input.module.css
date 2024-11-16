@@ -13,13 +13,22 @@ input[type="number"]::-ms-clear {
     display: none;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .input {
-    width: 48px;
-    height: 28px;
+    width: 40px;
+    height: 26px;
 
     font-family: inherit;
+    color: var(--black);
+    font-size: 16px;
     text-align: center;
 
-    border: 1px solid var(--black);
+    border: none;
+    outline: 1px solid var(--black);
     border-radius: 20px;
 }
