@@ -1,6 +1,6 @@
 import { BaseComponent } from "./baseComponent";
 import { Input } from "./input/input";
-import { ProgressBar } from "./progressBar";
+import { ProgressBar } from "./progressBar/progressBar";
 import { Toggle } from "./toggle/toggle";
 
 export class App extends BaseComponent {

@@ -5,23 +5,3 @@
 
     font-family: "Mulish", sans-serif;
 }
-
-progress {
-    background-color: var(--white);
-}
-
-::-webkit-progress-value {
-    transition: width 2s;
-}
-
-::-webkit-progress-value {
-    background-color: var(--blue);
-}
-
-::-moz-progress-bar {
-    background-color: var(--blue);
-}
-
-::-ms-fill {
-    background-color: var(--blue);
-}
