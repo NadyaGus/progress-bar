@@ -5,3 +5,15 @@
 
     font-family: "Mulish", sans-serif;
 }
+
+body,
+#app {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    max-width: 36rem;
+    margin: 0 auto;
+}

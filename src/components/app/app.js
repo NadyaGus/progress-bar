@@ -7,61 +7,53 @@ import style from "./app.module.css";
 
 export class App extends BaseComponent {
   constructor(parentElement) {
-    super({ tagName: "div", className: "container", parentElement });
+    super({ tagName: "div", className: style.wrapper, parentElement });
 
     this.progressBar = null;
+    this.renderElement();
   }
 
-  init() {
-    this.appendHeader();
-    this.appendProgressBar();
-    this.appendControls();
-
-    this.subscribeControls();
-  }
-
-  appendHeader() {
-    const header = new BaseComponent({
+  renderElement() {
+    new BaseComponent({
       tagName: "h1",
       className: style.header,
       parentElement: this.element,
-    });
+    }).addTextContent("Progress");
 
-    header.addTextContent("Progress");
-  }
-
-  appendProgressBar() {
-    const progressBar = new ProgressBar({
+    const container = new BaseComponent({
+      tagName: "div",
+      className: style.container,
       parentElement: this.element,
+    }).element;
+
+    this.progressBar = new ProgressBar({
+      parentElement: container,
     });
 
-    this.progressBar = progressBar;
+    this.appendControls(container);
+    this.subscribeControls();
   }
 
-  appendControls() {
+  appendControls(parentElement) {
     const controlsContainer = new BaseComponent({
       tagName: "div",
       className: style.controls,
-      parentElement: this.element,
+      parentElement: parentElement,
     });
 
-    const input = new Input({
+    this.input = new Input({
       parentElement: controlsContainer.element,
     });
 
-    const animateToggle = new Toggle({
+    this.animateToggle = new Toggle({
       title: "animate",
       parentElement: controlsContainer.element,
     });
 
-    const hideToggle = new Toggle({
+    this.hideToggle = new Toggle({
       title: "hide",
       parentElement: controlsContainer.element,
     });
-
-    this.input = input;
-    this.animateToggle = animateToggle;
-    this.hideToggle = hideToggle;
   }
 
   subscribeControls() {

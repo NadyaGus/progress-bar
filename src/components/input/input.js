@@ -30,7 +30,7 @@ export class Input extends BaseComponent {
   }
 
   handleInput() {
-    const debounceHandle = debounce(this.setState.bind(this), 1000);
+    const debounceHandle = debounce(this.setState.bind(this), 600);
     this.input.addEventListener("input", () => {
       debounceHandle(this.input.value);
     });

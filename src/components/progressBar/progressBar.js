@@ -36,7 +36,7 @@ export class ProgressBar extends BaseComponent {
       if (this.value == value) {
         clearInterval(this.interval);
       }
-    }, 20);
+    }, 15);
   }
 
   handleAnimate(isAnimate = false) {
