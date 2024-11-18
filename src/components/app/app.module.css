@@ -22,14 +22,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 62px;
-    margin: 60px;
+    gap: 60px;
+    margin: 64px;
 
     @media (orientation: landscape) {
         flex-direction: row;
         justify-content: center;
         gap: 80px;
-        margin: 52px;
+        margin: 48px;
         margin-left: 92px;
     }
 }
@@ -43,7 +43,7 @@
 
     @media (orientation: landscape) {
         position: relative;
-        bottom: 20px;
+        bottom: 16px;
         padding-left: 0;
         gap: 12px;
     }
