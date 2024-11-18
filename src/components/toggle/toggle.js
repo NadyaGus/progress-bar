@@ -7,6 +7,7 @@ export class Toggle extends BaseComponent {
 
     this.title = title;
     this.state = false;
+
     this.renderElement();
   }
 

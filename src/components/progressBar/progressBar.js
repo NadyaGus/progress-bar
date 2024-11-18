@@ -1,3 +1,4 @@
+import { defaultValue } from "../../utils/constants";
 import { BaseComponent } from "../baseComponent";
 
 import style from "./progressBar.module.css";
@@ -6,10 +7,10 @@ export class ProgressBar extends BaseComponent {
   constructor({ parentElement }) {
     super({ tagName: "div", className: style.progressBar, parentElement });
 
+    this.value = 0;
+
     this.renderProgressBar();
     this.handleProgressBar();
-
-    this.value = 0;
   }
 
   renderProgressBar() {
@@ -18,12 +19,9 @@ export class ProgressBar extends BaseComponent {
       className: style.progress,
       parentElement: this.element,
     }).element;
-
-    this.progress.setAttribute("min", "0");
-    this.progress.setAttribute("max", "100");
   }
 
-  handleProgressBar(value = 25) {
+  handleProgressBar(value = defaultValue) {
     this.progress.setAttribute("value", value);
     clearInterval(this.interval);
 

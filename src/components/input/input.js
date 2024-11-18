@@ -1,3 +1,4 @@
+import { defaultValue } from "../../utils/constants";
 import { debounce } from "../../utils/debounce";
 import { BaseComponent } from "../baseComponent";
 
@@ -8,6 +9,7 @@ export class Input extends BaseComponent {
     super({ tagName: "label", className: style.container, parentElement });
 
     this.state = "";
+
     this.renderElement();
   }
 
@@ -18,7 +20,7 @@ export class Input extends BaseComponent {
       parentElement: this.element,
     }).element;
     this.input.setAttribute("type", "number");
-    this.input.value = 25;
+    this.input.value = defaultValue;
 
     new BaseComponent({
       tagName: "span",

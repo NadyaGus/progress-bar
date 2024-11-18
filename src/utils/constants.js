@@ -1,0 +1,1 @@
+export const defaultValue = 25;

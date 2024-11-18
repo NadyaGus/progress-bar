@@ -9,7 +9,6 @@ export class App extends BaseComponent {
   constructor(parentElement) {
     super({ tagName: "div", className: style.wrapper, parentElement });
 
-    this.progressBar = null;
     this.renderElement();
   }
 

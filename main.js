@@ -1,6 +1,6 @@
 import { App } from "./src/components/app/app";
 
-const node = document.getElementById('app');
+const node = document.getElementById("app");
 
 try {
   new App(node);
