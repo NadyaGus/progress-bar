@@ -21,21 +21,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 96px;
+    gap: 62px;
     margin: 60px;
 
     @media (orientation: landscape) {
         flex-direction: row;
         justify-content: center;
         gap: 80px;
-        margin: 60px;
+        margin: 52px;
+        margin-left: 92px;
     }
 }
 
 .controls {
     display: flex;
     flex-direction: column;
-    padding-right: 12px;
+    padding-left: 12px;
     gap: 12px;
     font-weight: 600;
+
+    @media (orientation: landscape) {
+        position: relative;
+        bottom: 20px;
+        padding-left: 0;
+        gap: 12px;
+    }
 }

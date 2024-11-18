@@ -6,7 +6,7 @@ import style from "./input.module.css";
 
 export class Input extends BaseComponent {
   constructor({ parentElement }) {
-    super({ tagName: "label", className: style.container, parentElement });
+    super({ tagName: "div", className: style.container, parentElement });
 
     this.state = "";
 
@@ -14,32 +14,32 @@ export class Input extends BaseComponent {
   }
 
   renderElement() {
+    const label = new BaseComponent({
+      tagName: "label",
+      className: style.label,
+      parentElement: this.element,
+    }).element
+
     this.input = new BaseComponent({
       tagName: "input",
       className: style.input,
-      parentElement: this.element,
+      parentElement: label,
     }).element;
     this.input.setAttribute("type", "number");
     this.input.value = DEFAULT_VALUE;
 
-    const wrapper = new BaseComponent({
-      tagName: "div",
-      className: style.wrapper,
-      parentElement: this.element,
-    }).element;
+    new BaseComponent({
+      tagName: "span",
+      className: style.value,
+      parentElement: label,
+    }).addTextContent("Value");
 
     this.errorMessage = new BaseComponent({
-      tagName: "div",
+      tagName: "span",
       className: style.error,
-      parentElement: wrapper,
+      parentElement: this.element,
     });
     this.errorMessage.addTextContent(`Value must be between ${MIN_VALUE} and ${MAX_VALUE}`);
-
-    new BaseComponent({
-      tagName: "div",
-      className: style.value,
-      parentElement: wrapper,
-    }).addTextContent("Value");
 
     this.handleInput();
   }
