@@ -28,6 +28,7 @@
     @media (orientation: landscape) {
         flex-direction: row;
         justify-content: center;
+        align-items: baseline;
         gap: 80px;
         margin: 48px;
         margin-left: 92px;
