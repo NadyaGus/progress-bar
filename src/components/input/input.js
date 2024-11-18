@@ -1,4 +1,4 @@
-import { defaultValue, MAX_VALUE, MIN_VALUE } from "../../utils/constants";
+import { DEFAULT_VALUE, MAX_VALUE, MIN_VALUE } from "../../utils/constants";
 import { debounce } from "../../utils/debounce";
 import { BaseComponent } from "../baseComponent";
 
@@ -20,7 +20,7 @@ export class Input extends BaseComponent {
       parentElement: this.element,
     }).element;
     this.input.setAttribute("type", "number");
-    this.input.value = defaultValue;
+    this.input.value = DEFAULT_VALUE;
 
     const wrapper = new BaseComponent({
       tagName: "div",

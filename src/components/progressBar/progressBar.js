@@ -1,4 +1,4 @@
-import { defaultValue } from "../../utils/constants";
+import { DEFAULT_VALUE } from "../../utils/constants";
 import { BaseComponent } from "../baseComponent";
 import { MIN_VALUE } from "../../utils/constants";
 
@@ -22,7 +22,7 @@ export class ProgressBar extends BaseComponent {
     }).element;
   }
 
-  handleProgressBar(value = defaultValue) {
+  handleProgressBar(value = DEFAULT_VALUE) {
     this.progress.setAttribute("value", value);
     clearInterval(this.interval);
 
