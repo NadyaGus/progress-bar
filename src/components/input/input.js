@@ -1,4 +1,4 @@
-import { defaultValue } from "../../utils/constants";
+import { defaultValue, MAX_VALUE, MIN_VALUE } from "../../utils/constants";
 import { debounce } from "../../utils/debounce";
 import { BaseComponent } from "../baseComponent";
 
@@ -22,10 +22,23 @@ export class Input extends BaseComponent {
     this.input.setAttribute("type", "number");
     this.input.value = defaultValue;
 
-    new BaseComponent({
-      tagName: "span",
-      className: style.value,
+    const wrapper = new BaseComponent({
+      tagName: "div",
+      className: style.wrapper,
       parentElement: this.element,
+    }).element;
+
+    this.errorMessage = new BaseComponent({
+      tagName: "div",
+      className: style.error,
+      parentElement: wrapper,
+    });
+    this.errorMessage.addTextContent(`Value must be between ${MIN_VALUE} and ${MAX_VALUE}`);
+
+    new BaseComponent({
+      tagName: "div",
+      className: style.value,
+      parentElement: wrapper,
     }).addTextContent("Value");
 
     this.handleInput();
@@ -34,19 +47,36 @@ export class Input extends BaseComponent {
   handleInput() {
     const debounceHandle = debounce(this.setState.bind(this), 600);
     this.input.addEventListener("input", () => {
-      debounceHandle(this.input.value);
+      this.validate(debounceHandle);
     });
   }
 
   setState() {
     this.state = this.input.value;
 
-    this.state >= 100 ? (this.state = 100) : this.state;
-    this.state <= 0 ? (this.state = 0) : this.state;
-
     let event = new Event("newValue", { bubbles: true });
-    this.input.dispatchEvent(event);
+
+    if (!(this.state > MAX_VALUE || this.state < MIN_VALUE)) {
+      this.input.dispatchEvent(event);
+    }
 
     return this.state;
+  }
+
+  handleErrorMessage(isError = false) {
+    isError
+      ? this.errorMessage.element.classList.add(style.show)
+      : this.errorMessage.element.classList.remove(style.show);
+  }
+
+  validate(debounceHandle) {
+    if (this.input.value > MAX_VALUE) {
+      this.handleErrorMessage(true);
+    } else if (this.input.value < MIN_VALUE) {
+      this.handleErrorMessage(true);
+    } else {
+      this.handleErrorMessage(false);
+      debounceHandle(this.input.value);
+    }
   }
 }
